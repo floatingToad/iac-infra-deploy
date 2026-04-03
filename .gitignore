@@ -1,0 +1,28 @@
+# ----- Terraform -----
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ----- User-specific config -----
+terraform.tfvars
+*.auto.tfvars
+
+# Keep the example file committed
+!terraform.tfvars.example
+
+# ----- Provider lock file -----
+.terraform.lock.hcl
+
+# ----- OS / Editor -----
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

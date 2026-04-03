@@ -1,0 +1,51 @@
+###############################################################################
+# Step 1: Copy this file to terraform.tfvars
+#
+#   cp terraform.tfvars.example terraform.tfvars
+#
+# Step 2: Edit terraform.tfvars with your own values below.
+# Step 3: Do NOT commit terraform.tfvars.
+###############################################################################
+
+# --- General: Replace these with your project info ---
+project_name = "myproject"
+environment  = "dev"
+owner        = "your-name"
+aws_region   = "us-east-1"
+
+# --- Networking: Adjust CIDRs and AZs for your region ---
+# Public subnet 1 = Nginx/proxy, Public subnet 2 = Windows
+# Private subnets = RDS (needs 2 for multi-AZ)
+vpc_cidr             = "10.0.0.0/16"
+availability_zones   = ["us-east-1a", "us-east-1b"]
+public_subnet_cidrs  = ["10.0.1.0/24", "10.0.2.0/24"]
+private_subnet_cidrs = ["10.0.101.0/24", "10.0.102.0/24"]
+enable_nat_gateway   = true
+allowed_ssh_cidr     = "0.0.0.0/0"  # CHANGE THIS — restrict to your IP: "x.x.x.x/32"
+allowed_rdp_cidr     = "0.0.0.0/0"  # CHANGE THIS — restrict to your IP: "x.x.x.x/32"
+# enable_s3_endpoint = true         # Uncomment to keep S3 traffic inside AWS (free)
+
+# --- Compute: Uncomment and edit when you enable the compute module in main.tf ---
+# instance_count   = 1
+# instance_type    = "t3.micro"
+# ami_id           = ""     # Set your AMI ID, or leave empty for Amazon Linux 2023
+# public_key       = ""     # Paste your SSH public key here for EC2 access
+# root_volume_size = 20
+
+# --- Database: Uncomment and edit when you enable the database module in main.tf ---
+# db_engine           = "mysql"
+# db_engine_version   = "8.0"
+# db_instance_class   = "db.t3.micro"
+# db_allocated_storage = 20
+# db_name             = "appdb"
+# db_username         = "admin"
+# db_password         = ""     # Set a strong password — do NOT leave the default
+# db_port             = 3306
+# db_multi_az         = false
+
+# --- S3: Uncomment and edit when you enable the s3 module in main.tf ---
+# s3_bucket_suffix            = "assets"
+# s3_enable_versioning        = true
+# s3_block_public_access      = true        # Keep the bucket private
+# s3_force_destroy            = false
+# s3_bucket_policy_principals = ["arn:aws:iam::123456789012:role/your-ec2-role"]  # IAM ARN of your Nginx EC2 role
