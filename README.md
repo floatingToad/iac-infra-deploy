@@ -12,7 +12,7 @@ iac-infra-deploy/
 └── README.md
 ```
 
-## Network Architecture
+## Cloud Architecture
 
 ![Network Diagram](public/energycorp.png)
 
